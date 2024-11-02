@@ -144,6 +144,9 @@ class Part:
             # If this field specifies an include file
             if field.name.lower() == 'veriloginclude':
                 return field.value
+            # Quick hack to let the script automatically include all components that have the name of a 74-series chip
+            elif self.name.startswith("74"):
+                return self.name + ".v"
 
         return None;
 
